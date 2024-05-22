@@ -9,9 +9,9 @@ describe('<Day />', () => {
 
     it('renders the same amount of todos as are in the props', () => {
         const testTodos = [
-            { id: 1, text: "Buy milk" },
-            { id: 2, text: "Walk the dog" },
-            { id: 3, text: "Read a book" },
+            { id: 1, day: 'mo', done: true, late: false, text: 'Göra klart inlämning' },
+	        { id: 2, day: 'mo', done: true, late: false, text: 'Lektion i skolan 9-16' },
+	        { id: 3, day: 'mo', done: false, late: true, text: 'Övning 1' },
         ];
 
         cy.mount(<Day day={testTodos} dayName="Monday" dayKey="monday" />);

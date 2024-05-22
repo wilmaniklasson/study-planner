@@ -5,6 +5,9 @@ const PrioList = () => {
 	const todos = useStore(state => state.todos)
 	const items = todos.filter(t => !t.done)
 
+	//skapa filtrering vid sökfunktionalitet
+	
+
 	return (
 		<div className="prio-list">
 			<h2> Vad ska jag göra nu? </h2>
