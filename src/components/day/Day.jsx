@@ -10,7 +10,7 @@ const Day = ({ day, dayName, dayKey }) => {
     const handleAddTodo = (e) => {
         e.preventDefault();
         if (newTodo.trim() !== '') {
-            addTodo(dayKey, newTodo);  // Use the dayKey to add the todo to the correct day
+            addTodo(dayKey, newTodo); // Använder dayKey för att skicka med vilken dag det är
             setNewTodo('');
             setShowInput(false);
         }

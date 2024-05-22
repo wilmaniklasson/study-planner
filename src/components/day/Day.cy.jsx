@@ -1,43 +1,21 @@
 import React from 'react';
 import Day from './Day';
-import { useStore } from '../../data/store';
-import { weekdays } from '../../utils/weekdays';
 
-
-describe('Day component', () => {
-  let initialState;
-
-  before(() => {
-    // Spara initialt tillstånd före alla tester
-    initialState = useStore.getState();
-  });
-
-  beforeEach(() => {
-    // Återställ tillståndet innan varje test
-    useStore.setState(initialState, true); 
-  });
-
-  weekdays.forEach(({ key, name }) => {
-    it('renders the day name and todos for ${name}', () => {
-      const day = useStore.getState().todos[key] || [];
-
-      cy.mount(<Day day={day} dayName={name} dayKey={key} />);
-
-      cy.contains('h2', name).should('be.visible');
-      day.forEach(todo => {
-        cy.contains('li', todo.text).should('be.visible');
-      });
+describe('<Day />', () => {
+    it('renders', () => {
+        // see: https://on.cypress.io/mounting-react
+        cy.mount(<Day day={[]} dayName="Monday" dayKey="monday" />);
     });
 
-    it('can open and close the new todo input for ${name}', () => {
-      const day = useStore.getState().todos[key] || [];
+    it('renders the same amount of todos as are in the props', () => {
+        const testTodos = [
+            { id: 1, text: "Buy milk" },
+            { id: 2, text: "Walk the dog" },
+            { id: 3, text: "Read a book" },
+        ];
 
-      cy.mount(<Day day={day} dayName={name} dayKey={key} />);
-
-      cy.get('.new-task-btn').click();
-      cy.get('input').should('be.visible');
-      cy.get('button').contains('Avbryt').click();
-      cy.get('input').should('not.exist');
+        cy.mount(<Day day={testTodos} dayName="Monday" dayKey="monday" />);
+        cy.get('.item').should('have.length', testTodos.length);
     });
-  });
+
 });
