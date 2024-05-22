@@ -9,6 +9,7 @@ import { weekdays } from '../utils/weekdays.js';
 const Main = () => {
     const todos = useStore(state => state.todos);
     const days = splitTodosIntoDays(todos);
+    console.log(todos)
     
     return (
         <main>
