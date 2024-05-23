@@ -13,6 +13,8 @@ const Main = () => {
     const totalTodos = todos.length;
     const completedTodos = todos.filter(todo => todo.done).length;
 
+    console.log(todos);
+
     // Hämta toggleTodo-funktionen från useStore
     const toggleTodo = useStore(state => state.toggleTodo);
 
