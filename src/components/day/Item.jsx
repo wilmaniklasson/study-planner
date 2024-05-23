@@ -43,6 +43,11 @@ const Item = ({ item }) => {
         removeTodo(item.id);
     };
 
+        let itemClass = '';
+    if (item.done) itemClass += 'done ';
+    if (item.late) itemClass += 'due';
+
+
     return (
         <div className="item">
             {/* Checkbox för att toggla done-status */}
@@ -62,9 +67,10 @@ const Item = ({ item }) => {
                 </>
             ) : (
                 // Visar texten och tillämpar en klass om todo är klar
-                <label className={item.done ? 'done' : ''} onClick={handleToggle}>
-                    {item.text}
+                <label data-cy="checkbox" className={itemClass} onClick={handleToggle}>
+                {item.text}
                 </label>
+
             )}
             {/* conditional rendering */}
             {!isEditing && <span title="Ändra" onClick={handleEditClick}>✏️</span>}

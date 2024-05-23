@@ -3,12 +3,12 @@
 
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('/')
   })
 
   // lägg till en uppgift
   it('should add a task', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('/')
     cy.contains('Måndag').click()
     cy.contains('Ny uppgift').click()
     cy.get('input[type="text"]').type('Test task')
@@ -20,7 +20,7 @@ describe('template spec', () => {
 
   // läggeer till en uppgift och tar bort den
   it ('should  add and then remove the task', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('/')
     cy.contains('Måndag').click()
     cy.contains('Ny uppgift').click()
     cy.get('input[type="text"]').type('Test task')
@@ -32,7 +32,7 @@ describe('template spec', () => {
 
   // Ändra texten på en uppgift
   it ('should edit a task', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('/')
     cy.contains('Måndag').click()
     cy.contains('Ny uppgift').click()
     cy.get('input[type="text"]').type('Test task')
@@ -44,21 +44,16 @@ describe('template spec', () => {
     cy.contains('Edited task')
   })
 
-  // Basradskommentar för femte testet
-  /*it ('should toggle a task', () => {
-    cy.visit('http://localhost:5173/')
-    cy.contains('Måndag').click()
-    cy.contains('Ny uppgift').click()
-    cy.get('input[type="text"]').type('Test task')
-    cy.contains('Spara').click()
-    cy.contains('Test task')
-    cy.get('input[type="checkbox"]').click()
-    cy.get('input[type="checkbox"]').should('be.checked')
-  })*/
+  it('should toggle a task', () => {
+    cy.visit('/')
+    cy.get('[data-cy="checkbox"]').first().click()
+    cy.get('[data-cy="checkbox"]').should('have.class', 'done')
+})
+
 
   // lägg till övning 1, 2 och 3 på samma dag
   it('should add Övning 1,2 and 3', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('/')
     cy.contains('Måndag').click()
     cy.contains('Ny uppgift').click()
     cy.get('input[type="text"]').type('Övning 1')
@@ -80,7 +75,7 @@ describe('template spec', () => {
 
   // sök efter övning 1, 2 och 3
   it ('should search for a task', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('/')
     cy.get('input[type="search"]').type('Övning 1')
     cy.contains('Övning 1').should('exist')
     cy.get('input[type="search"]').clear().type('Övning 2')
@@ -93,7 +88,7 @@ describe('template spec', () => {
 
   // lägg till övning 5, 6, 7 och sök efter dem
   it('should add (Övning 5, 6, 7) and search for them', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('/')
 
     //Måndag övning 5
     cy.contains('Måndag').click()

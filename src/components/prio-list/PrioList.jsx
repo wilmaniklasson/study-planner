@@ -6,7 +6,7 @@ const PrioList = () => {
 	const todos = useStore(state => state.todos)
 	const items = todos.filter(t => !t.done)
 	const [searchTerm, setSearchTerm] = useState('');
-    const filteredItems = todos.filter(item =>
+    const filteredItems = items.filter(item =>
         item.text.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
