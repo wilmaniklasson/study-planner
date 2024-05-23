@@ -37,7 +37,7 @@ const Day = ({ day, dayName, dayKey }) => {
                     <button type="button" onClick={() => setShowInput(false)}>Avbryt</button>
                 </form>
             ) : (
-                <button className="new-task-btn "onClick={() => setShowInput(true)}>Ny uppgift</button>
+                <button data-cy="newTask" className="new-task-btn "onClick={() => setShowInput(true)}>Ny uppgift</button>
             )}
         </div>
     );
