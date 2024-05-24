@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test:unit": "vitest",
-    "test:e2e": "cypress open"
+    "cy:open": "cypress open",
+    "test": "vitest"
   },
   "dependencies": {
     "react": "^18.2.0",
